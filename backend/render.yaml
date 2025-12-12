@@ -4,12 +4,12 @@ services:
     env: node
     plan: free
     buildCommand: 'npm install'
-    startCommand: 'node index.js'
+    startCommand: 'mkdir -p /app/backend/data && node index.js'
     healthCheckPath: /api/health
     disks:
       - name: data
-        mountPath: /app/data
+        mountPath: /app/backend/data
         sizeGB: 1
     envVars:
       - key: DATABASE_PATH
-        value: /app/data/db.sqlite
+        value: "/app/backend/data/db.sqlite"
