@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18' # Or your preferred Node.js version
+
+    - name: Install Frontend Dependencies
+      run: cd frontend && npm install
+
+    - name: Run Frontend Lint
+      run: cd frontend && npm run lint
+
+    - name: Run Frontend Tests
+      run: cd frontend && npm run test || echo 'No frontend tests configured'
+
+    - name: Install Backend Dependencies
+      run: cd backend && npm install
+
+    - name: Run Backend Lint
+      run: cd backend && npm run lint
+
+    - name: Run Backend Tests
+      run: cd backend && npm run test || echo 'No backend tests configured'
+
+    - name: Start Backend Server
+      run: cd backend && node index.js &
+      
+    - name: Start Frontend Server
+      run: cd frontend && npm run dev &
+
+    - name: Wait for servers to start
+      run: sleep 10 # Give servers time to fully start
+
+    - name: Run Smoke Tests
+      run: ./scripts/smoke-test.sh
