@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: vaccine-slot-booking-backend
+    env: node
+    plan: free
+    buildCommand: 'npm install'
+    startCommand: 'node index.js'
+    healthCheckPath: /api/health
+    disks:
+      - name: data
+        mountPath: /app/data
+        sizeGB: 1
+    envVars:
+      - key: DATABASE_PATH
+        value: /app/data/db.sqlite

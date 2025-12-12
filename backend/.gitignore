@@ -1,0 +1,9 @@
+node_modules
+data/db.sqlite
+data/db.sqlite-shm
+data/db.sqlite-wal
+.DS_Store
+npm-debug.log
+.env
+dist
+build
