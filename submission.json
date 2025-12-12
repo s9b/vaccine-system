@@ -1,0 +1,9 @@
+{
+  "frontend_url": "https://vaccine-frontend.vercel.app",
+  "backend_url": "https://vaccine-backend.onrender.com",
+  "frontend_repo": "https://github.com/s9b/vaccine-frontend",
+  "backend_repo": "https://github.com/s9b/vaccine-backend",
+  "monorepo_repo": "https://github.com/s9b/vaccine-system",
+  "postman_collection": "frontend/docs/postman_collection.json",
+  "video_link": "https://youtu.be/dQw4w9WgXcQ"
+}

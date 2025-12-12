@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+		"name": "Vaccine Slot Reservation System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Clinic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Clinic from Postman\",\n    \"location\": \"Postman Test Location\",\n    \"description\": \"This is a test clinic created from Postman.\"\n}"
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/admin/clinics",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"clinics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Slot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"start_time\": \"2025-12-12T15:00:00\",\n    \"duration_minutes\": 30,\n    \"capacity\": 5\n}"
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/admin/clinics/1/slots",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"clinics",
+								"1",
+								"slots"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/admin/bookings",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "List Clinics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/clinics",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"clinics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Slots for Clinic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/clinics/1/slots",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"clinics",
+								"1",
+								"slots"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Slot Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/slots/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"slots",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Postman User\",\n    \"phone\": \"1234567890\",\n    \"seats_reserved\": 1\n}"
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/slots/1/book",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"slots",
+								"1",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Booking Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/bookings/1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"bookings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/bookings/1/confirm",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"bookings",
+								"1",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/bookings/1/cancel",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"bookings",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "API_BASE_URL",
+			"value": "https://vaccine-backend.onrender.com/api"
+		}
+	]
+}

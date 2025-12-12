@@ -12,6 +12,13 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Request logger middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  console.log('Body:', req.body);
+  next();
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'UP' });
